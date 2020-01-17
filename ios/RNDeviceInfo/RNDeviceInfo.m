@@ -293,10 +293,10 @@ RCT_EXPORT_METHOD(getDeviceName:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
 #else
     CTTelephonyNetworkInfo *netinfo = [[CTTelephonyNetworkInfo alloc] init];
     CTCarrier *carrier = [netinfo subscriberCellularProvider];
-    if (carrier.carrierName != nil) {
+    if (carrier.carrierName != nil && carrier.mobileNetworkCode != nil) {
         return carrier.carrierName;
     }
-    return @"unknown";
+    return @"";
 #endif
 }
 
