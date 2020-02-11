@@ -23,6 +23,8 @@ import android.os.BatteryManager;
 import android.provider.Settings;
 import android.webkit.WebSettings;
 import android.telephony.TelephonyManager;
+import android.telephony.SubscriptionManager;
+import android.telephony.SubscriptionInfo;
 import android.text.TextUtils;
 import android.app.ActivityManager;
 import android.hardware.Camera;
@@ -309,9 +311,19 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
 
   @ReactMethod(isBlockingSynchronousMethod = true)
   public String getCarrierSync() {
+    SubscriptionManager subscriptionManager = (SubscriptionManager) getReactApplicationContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+    String carriers = "";
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
+        List<SubscriptionInfo> subscriptionInfos = subscriptionManager.getActiveSubscriptionInfoList();
+        if(subscriptionInfos != null){
+          for (int i = 0; i < subscriptionInfos.size(); i++) {
+              carriers += subscriptionInfos.get(i).getCarrierName().toString()  + ", ";
+          }
+        }
+    }
     TelephonyManager telMgr = (TelephonyManager) getReactApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
     if (telMgr != null) {
-      return telMgr.getNetworkOperatorName();
+      return carriers;
     } else {
       System.err.println("Unable to get network operator name. TelephonyManager was null");
       return "unknown";
