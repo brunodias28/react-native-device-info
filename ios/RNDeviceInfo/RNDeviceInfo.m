@@ -317,7 +317,7 @@ RCT_EXPORT_METHOD(getDeviceName:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
         return @"algar";
     }
     if([carrier.mobileNetworkCode isEqualToString:@"15"]){
-        return @"sercontel";
+        return @"sercomtel";
     }
     if (carrier.carrierName != nil && carrier.mobileNetworkCode != nil) {
         return carrier.carrierName;
