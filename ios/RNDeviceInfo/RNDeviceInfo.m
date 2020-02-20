@@ -293,6 +293,32 @@ RCT_EXPORT_METHOD(getDeviceName:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
 #else
     CTTelephonyNetworkInfo *netinfo = [[CTTelephonyNetworkInfo alloc] init];
     CTCarrier *carrier = [netinfo subscriberCellularProvider];
+    /*
+        VIVO -> 01 - 19 - 23 - 11 - 10 - 06
+        TIM -> 08 - 03 - 02 - 04
+        OI -> 30 - 31
+        Sercomtel -> 15
+        Algar -> 34 - 33 - 32 - 07
+        Nextel -> 00 - 39 
+    */
+    if([carrier.mobileNetworkCode isEqualToString:@"01"] || [carrier.mobileNetworkCode isEqualToString:@"19"] || [carrier.mobileNetworkCode isEqualToString:@"23"] || [carrier.mobileNetworkCode isEqualToString:@"11"] || [carrier.mobileNetworkCode isEqualToString:@"10"] || [carrier.mobileNetworkCode isEqualToString:@"06"]){
+        return @"vivo";
+    }
+    if([carrier.mobileNetworkCode isEqualToString:@"08"] || [carrier.mobileNetworkCode isEqualToString:@"03"] || [carrier.mobileNetworkCode isEqualToString:@"02"] || [carrier.mobileNetworkCode isEqualToString:@"04"]){
+        return @"tim";
+    }
+    if([carrier.mobileNetworkCode isEqualToString:@"30"] || [carrier.mobileNetworkCode isEqualToString:@"31"]){
+        return @"oi";
+    }
+    if([carrier.mobileNetworkCode isEqualToString:@"39"] || [carrier.mobileNetworkCode isEqualToString:@"00"]){
+        return @"nextel";
+    }
+    if([carrier.mobileNetworkCode isEqualToString:@"34"] || [carrier.mobileNetworkCode isEqualToString:@"33"] || [carrier.mobileNetworkCode isEqualToString:@"32"] || [carrier.mobileNetworkCode isEqualToString:@"07"]){
+        return @"algar";
+    }
+    if([carrier.mobileNetworkCode isEqualToString:@"15"]){
+        return @"sercontel";
+    }
     if (carrier.carrierName != nil && carrier.mobileNetworkCode != nil) {
         return carrier.carrierName;
     }
