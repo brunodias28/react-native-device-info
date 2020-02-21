@@ -317,7 +317,53 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
         List<SubscriptionInfo> subscriptionInfos = subscriptionManager.getActiveSubscriptionInfoList();
         if(subscriptionInfos != null){
           for (int i = 0; i < subscriptionInfos.size(); i++) {
-              carriers += subscriptionInfos.get(i).getCarrierName().toString()  + ", ";
+            /*
+              VIVO -> 01 || 19 || 23 || 11 || 10 || 06
+              TIM -> 08 || 03 || 02 || 04
+              OI -> 30 || 31
+              Sercomtel -> 15
+              Algar -> 34 || 33 ||32 || 07
+              Nextel -> 00 || 39 
+            */
+            int mnc = subscriptionInfos.get(i).getMnc();
+            switch(mnc) {
+              case 01: 
+              case 19: 
+              case 23: 
+              case 11: 
+              case 10: 
+              case 06:
+                carriers += "vivo, ";
+                // carriers += "vivo, ";
+                break;
+              case 8: 
+              case 03: 
+              case 02: 
+              case 04:
+                carriers += "tim, ";  
+                // carriers += "tim, ";  
+                break;
+              case 30: 
+              case 31:
+                carriers += "oi, ";  
+                break;
+              case 15:
+                carriers += "sercomtel, ";  
+                break;
+              case 34: 
+              case 33: 
+              case 32: 
+              case 07:
+                carriers += "algar, ";  
+                break;
+              case 00: 
+              case 39:
+                carriers += "nextel, ";  
+                break;
+              default:
+                carriers += subscriptionInfos.get(i).getCarrierName().toString()  + ", ";
+            }
+            // carriers += subscriptionInfos.get(i).getCarrierName().toString()  + ", ";
           }
         }
     }
