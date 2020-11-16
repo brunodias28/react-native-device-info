@@ -326,10 +326,10 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
               Nextel -> 00 || 39 
             */
             int mnc = subscriptionInfos.get(i).getMnc();
-            String carrierName = subscriptionInfos.get(i).getDisplayName().toString().toLowerCase();
-            if(carrierName == null || carrierName.isEmpty() || carrierName.equals("null") || carrierName.toLowerCase().contains("card") || carrierName.toLowerCase().contains("sem") || carrierName.toLowerCase().contains("somente"))
-                carrierName = subscriptionInfos.get(i).getCarrierName().toString().toLowerCase();
-            carriers += carrierName  + ", ";
+            // String carrierName = subscriptionInfos.get(i).getDisplayName().toString().toLowerCase();
+            // if(carrierName == null || carrierName.isEmpty() || carrierName.equals("null") || carrierName.toLowerCase().contains("card") || carrierName.toLowerCase().contains("sem") || carrierName.toLowerCase().contains("somente"))
+            //     carrierName = subscriptionInfos.get(i).getCarrierName().toString().toLowerCase();
+            // carriers += carrierName  + ", ";
             
             // if((mnc == 01 || mnc ==  19 || mnc ==  23 || mnc ==  11 || mnc ==  10 || mnc ==  06) && carrierName.indexOf("vivo") >= 0){
             //   carriers += "vivo, ";
@@ -352,41 +352,41 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
             //   carriers += carrierName  + ", ";
             // }
 
-            // switch(mnc) {
-            //   case 01: 
-            //   case 19: 
-            //   case 23: 
-            //   case 11: 
-            //   case 10: 
-            //   case 06:
-            //     carriers += "vivo, ";
-            //     break;
-            //   case 8: 
-            //   case 03: 
-            //   case 02: 
-            //   case 04:
-            //     carriers += "tim, ";  
-            //     break;
-            //   case 30: 
-            //   case 31:
-            //     carriers += "oi, ";  
-            //     break;
-            //   case 15:
-            //     carriers += "sercomtel, ";  
-            //     break;
-            //   case 34: 
-            //   case 33: 
-            //   case 32: 
-            //   case 07:
-            //     carriers += "algar, ";  
-            //     break;
-            //   case 00: 
-            //   case 39:
-            //     carriers += "nextel, ";  
-            //     break;
-            //   default:
-            //     carriers += subscriptionInfos.get(i).getCarrierName().toString()  + ", ";
-            // }
+            switch(mnc) {
+              case 01: 
+              case 19: 
+              case 23: 
+              case 11: 
+              case 10: 
+              case 06:
+                carriers += "vivo, ";
+                break;
+              case 8: 
+              case 03: 
+              case 02: 
+              case 04:
+                carriers += "tim, ";  
+                break;
+              case 30: 
+              case 31:
+                carriers += "oi, ";  
+                break;
+              case 15:
+                carriers += "sercomtel, ";  
+                break;
+              case 34: 
+              case 33: 
+              case 32: 
+              case 07:
+                carriers += "algar, ";  
+                break;
+              case 00: 
+              case 39:
+                carriers += "nextel, ";  
+                break;
+              default:
+                carriers += subscriptionInfos.get(i).getCarrierName().toString()  + ", ";
+            }
             // carriers += subscriptionInfos.get(i).getCarrierName().toString()  + ", ";
           }
         }
