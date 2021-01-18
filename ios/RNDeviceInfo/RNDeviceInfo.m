@@ -310,7 +310,7 @@ RCT_EXPORT_METHOD(getDeviceName:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
     if([carrier.mobileNetworkCode isEqualToString:@"30"] || [carrier.mobileNetworkCode isEqualToString:@"31"]){
         return @"oi";
     }
-    if([carrier.mobileNetworkCode isEqualToString:@"39"] || [carrier.mobileNetworkCode isEqualToString:@"00"]){
+    if([carrier.mobileNetworkCode isEqualToString:@"39"] || [carrier.mobileNetworkCode isEqualToString:@"00"] || [carrier.mobileNetworkCode isEqualToString:@"20"]){
         return @"nextel";
     }
     if([carrier.mobileNetworkCode isEqualToString:@"34"] || [carrier.mobileNetworkCode isEqualToString:@"33"] || [carrier.mobileNetworkCode isEqualToString:@"32"] || [carrier.mobileNetworkCode isEqualToString:@"07"]){
