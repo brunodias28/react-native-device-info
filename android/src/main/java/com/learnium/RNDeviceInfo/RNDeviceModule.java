@@ -323,7 +323,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
               OI -> 30 || 31
               Sercomtel -> 15
               Algar -> 34 || 33 ||32 || 07
-              Nextel -> 00 || 39 
+              Nextel || claro-nxt -> 00 || 39 
             */
             int mnc = subscriptionInfos.get(i).getMnc();
             // String carrierName = subscriptionInfos.get(i).getDisplayName().toString().toLowerCase();
@@ -382,7 +382,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
                 break;
               case 00: 
               case 39:
-                carriers += "nextel, ";  
+                carriers += "claro-nxt, ";  
                 break;
               default:
                 carriers += subscriptionInfos.get(i).getCarrierName().toString()  + ", ";

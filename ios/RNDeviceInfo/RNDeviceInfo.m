@@ -299,7 +299,7 @@ RCT_EXPORT_METHOD(getDeviceName:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
         OI -> 30 - 31
         Sercomtel -> 15
         Algar -> 34 - 33 - 32 - 07
-        Nextel -> 00 - 39 
+        Nextel || claro-nxt -> 00 - 39 
     */
     if([carrier.mobileNetworkCode isEqualToString:@"01"] || [carrier.mobileNetworkCode isEqualToString:@"19"] || [carrier.mobileNetworkCode isEqualToString:@"23"] || [carrier.mobileNetworkCode isEqualToString:@"11"] || [carrier.mobileNetworkCode isEqualToString:@"10"] || [carrier.mobileNetworkCode isEqualToString:@"06"]){
         return @"vivo";
@@ -311,7 +311,7 @@ RCT_EXPORT_METHOD(getDeviceName:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
         return @"oi";
     }
     if([carrier.mobileNetworkCode isEqualToString:@"39"] || [carrier.mobileNetworkCode isEqualToString:@"00"] || [carrier.mobileNetworkCode isEqualToString:@"20"]){
-        return @"nextel";
+        return @"claro-nxt";
     }
     if([carrier.mobileNetworkCode isEqualToString:@"34"] || [carrier.mobileNetworkCode isEqualToString:@"33"] || [carrier.mobileNetworkCode isEqualToString:@"32"] || [carrier.mobileNetworkCode isEqualToString:@"07"]){
         return @"algar";
